@@ -287,5 +287,7 @@ export class FootballDataService {
       ]
   }
   public hello(){
+    console.log("coco les babies")
     console.log("nice to meet you")}
+
 }
