@@ -286,5 +286,6 @@ export class FootballDataService {
       }
       ]
   }
-
+public hello(){
+  console.log("coco les babies")}
 }
