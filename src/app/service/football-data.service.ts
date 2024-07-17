@@ -14,7 +14,7 @@ export class FootballDataService {
   constructor(private http: HttpClient) { }
 
   retrieveAllStandings(): Observable<Standing[]> {
-    
+
     return this.http.get<Standing[]>(this.standingURL);
   }
 
@@ -286,6 +286,8 @@ export class FootballDataService {
       }
       ]
   }
-public hello(){
-  console.log("coco les babies")}
+  public hello(){
+    console.log("coco les babies")
+    console.log("nice to meet you")}
+
 }
