@@ -9,7 +9,7 @@ pipeline {
         }
         stage ("Clone repo"){
             steps {
-                sh "git clone "
+                sh "git clone https://github.com/arijsebai/astonvilla.git"
             }
         }
         stage ("Generate docker image") {
