@@ -12,19 +12,6 @@ pipeline {
                 sh "git clone https://github.com/arijsebai/astonvilla.git "
             }
         }
-        stage ("Generate docker image") {
-            steps {
-                 dir("astonvilla-app"){
-                    sh "docker build -t astonvilla-app:1.1.${env.BUILD_NUMBER} ."
-                }                
-            }
-        }
-        stage ("push docker image") {
-            steps {
-                 dir("astonvilla-app"){
-                    sh "docker push arij17/astonvilla-app:1.1.${env.BUILD_NUMBER}"
-                }                
-            }
-        }
+       
     }
 }
