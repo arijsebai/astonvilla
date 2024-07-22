@@ -3,13 +3,12 @@ pipeline {
     stages {
         stage ("Clean up"){
             steps {
-                sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla/*'
-                sh 'ls'
+                
             }
         }
         stage ("Clone repo"){
             steps {
-                sh "git clone https://github.com/arijsebai/astonvilla.git"
+                
             }
         }
         stage ("Generate docker image") {
