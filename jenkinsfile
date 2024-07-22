@@ -8,6 +8,13 @@ pipeline {
                 sh 'pwd'
             }
         }
+        stage ("clone project"){
+            steps {
+                sh 'git clone '
+                sh 'ls'
+                sh 'pwd'
+            }
+        }
        } 
 }
 
