@@ -5,14 +5,14 @@ pipeline {
             steps {
                 sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla/*'
                 sh 'ls'
-                sh 'pwd'
+               
             }
         }
         stage ("clone project"){
             steps {
-                sh 'git clone '
+                sh 'git clone https://github.com/arijsebai/astonvilla.git'
                 sh 'ls'
-                sh 'pwd'
+                
             }
         }
        } 
