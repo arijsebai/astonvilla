@@ -1,17 +1,27 @@
 pipeline {
     agent any 
     stages {
-        
+        stage ("Clean up"){
+            steps {
+                sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla/*'
+                sh 'ls'
+            }
+        }
+        stage ("Clone repo"){
+            steps {
+                sh "git clone "
+            }
+        }
         stage ("Generate docker image") {
             steps {
-                 dir("astonvilla"){
+                 dir("astonvilla-app"){
                     sh "docker build -t astonvilla-app:1.1.${env.BUILD_NUMBER} ."
                 }                
             }
         }
         stage ("push docker image") {
             steps {
-                 dir("astonvilla"){
+                 dir("astonvilla-app"){
                     sh "docker push arij17/astonvilla-app:1.1.${env.BUILD_NUMBER}"
                 }                
             }
