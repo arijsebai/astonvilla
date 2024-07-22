@@ -1,9 +1,11 @@
 pipeline {
     agent any 
     stages {
-        stage ("greeting"){
+        stage ("clean workspace"){
             steps {
-                sh 'echo "hello we are creating a pipeline for astonvilla app" '
+                sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla/*'
+                sh 'ls'
+                sh 'pwd'
             }
         }
        } 
