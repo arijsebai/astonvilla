@@ -1,20 +1,30 @@
 pipeline {
     agent any 
     stages {
-        stage ("clean workspace"){
+        stage ("Clean up"){
             steps {
-                sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla/*'
+                sh 'rm -rf /root/.jenkins/workspace/astonvilla/*'
                 sh 'ls'
-               
             }
         }
-        stage ("clone project"){
+        stage ("Clone repo"){
             steps {
-                sh 'git clone https://github.com/arijsebai/astonvilla.git'
-                sh 'ls'
-                
+                sh "git clone https://github.com/Raouf-Rhimi/astonvilla-app.git"
             }
         }
-       } 
+        stage ("Generate docker image") {
+            steps {
+                 dir("astonvilla-app"){
+                    sh "docker build -t kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER} ."
+                }                
+            }
+        }
+        stage ("push docker image") {
+            steps {
+                 dir("astonvilla-app"){
+                    sh "docker push kakachisensei/astonvilla-app:1.1.${env.BUILD_NUMBER}"
+                }                
+            }
+        }
+    }
 }
-
