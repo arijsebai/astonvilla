@@ -3,29 +3,28 @@ pipeline {
     stages {
         stage ("Clean up"){
             steps {
-                sh 'rm -rf /home/arij/.jenkins/workspace/astonvilla1/*'
-                sh 'ls'
+                 deleteDir()
             }
         }
-        stage ("Clone repo"){
+        stage('Checkout') {
             steps {
-                sh "git clone https://github.com/arijsebai/astonvilla.git "
+              git url: 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
+            }
+        }
+        stage('Run Sonar Server') {
+            steps {
+              sh "docker-compose -f sonar-docker-compose.yaml up -d"
             }
         }
         stage ("Generate docker image") {
             steps {
-                 dir("astonvilla"){
-                    sh "docker build -t arij17/astonvilla-app:1.1.${env.BUILD_NUMBER} ."
-                }                
+                sh "docker build -t arij17/astonvilla-app:1.1.${env.BUILD_NUMBER} ."
             }
         }
         stage ("push docker image") {
             steps {
-                 dir("astonvilla"){
-                    sh "docker push arij17/astonvilla-app:1.1.${env.BUILD_NUMBER}"
-                }                
+              sh "docker push arij17/astonvilla-app:1.1.${env.BUILD_NUMBER}"
             }
         }
-       
     }
 }
