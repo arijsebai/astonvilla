@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-              git url: 'https://github.com/Raouf-Rhimi/astonvilla-app.git'
+              git url: 'https://github.com/arijsebai/astonvilla.git'
             }
         }
         stage('Run Sonar Server') {
